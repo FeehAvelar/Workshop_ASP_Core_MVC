@@ -16,7 +16,8 @@ namespace SalesWebMVC.Models
         #endregion
 
         # region Associations
-        public Departament Departament { get; set; }
+        public Department Department { get; set; }
+        public int DepartmentID { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
         #endregion
 
@@ -25,14 +26,14 @@ namespace SalesWebMVC.Models
         {
         }
 
-        public Seller(int id, string name, string email, double baseSalary, DateTime birthDate, Departament departament)
+        public Seller(int id, string name, string email, double baseSalary, DateTime birthDate, Department department)
         {
             Id = id;
             Name = name;
             Email = email;
             BaseSalary = baseSalary;
             BirthDate = birthDate;
-            Departament = departament;
+            Department = department;
         }
         #endregion
 
