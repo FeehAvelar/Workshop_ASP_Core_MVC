@@ -10,16 +10,28 @@ namespace SalesWebMVC.Models
 
         #region Basic Attributes
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "{0} required")]
+        //[StringLength(60, MinimumLength = 3, ErrorMessage = "{0} size should be between 3 and 60 char")]
+        [StringLength (60, MinimumLength = 3, ErrorMessage ="{0} size should be between {2} and {1} char")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "{0} required")]
+        [EmailAddress(ErrorMessage = "Enter a valid email")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [Display(Name = "Base Salary")]
+
+        [Required(ErrorMessage = "{0} required")]
+        [Range(100.00, 50000.00, ErrorMessage = "{0} must be from {1} to {2}")]
         [DataType(DataType.Currency)]
+        [Display(Name = "Base Salary")]
         //[DisplayFormat(DataFormatString = "{0:F2}")]
         public double BaseSalary { get; set; }
-        [Display(Name = "Birth Date")]
+
+        [Required(ErrorMessage = "{0} required")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Birth Date")]
         public DateTime BirthDate { get; set; }
         #endregion
 
