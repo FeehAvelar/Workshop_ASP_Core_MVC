@@ -33,14 +33,6 @@ namespace SalesWebMVC.Services
             _context.Seller.Add(seller);
             await _context.SaveChangesAsync();
         }
-
-        public void Remove(int id)
-        {
-            var seller = _context.Seller.Find(id);
-            _context.Seller.Remove(seller);
-            _context.SaveChanges();
-        }
-        
         public async Task RemoveAsync(int id)
         {
             try
@@ -53,6 +45,13 @@ namespace SalesWebMVC.Services
             {
                 throw new IntegrityException("Can't delete seller because he/she has sales");
             }
+        }
+
+        public void Remove(int id)
+        {
+            var seller = _context.Seller.Find(id);
+            _context.Seller.Remove(seller);
+            _context.SaveChanges();
         }
 
         public async Task UpdateAsync(Seller seller)
